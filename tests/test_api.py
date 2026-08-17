@@ -1,6 +1,9 @@
+import time
+
 from fastapi.testclient import TestClient
 
 from app.main import app
+from app.pipeline import pipeline
 
 
 client = TestClient(app)
@@ -44,3 +47,33 @@ def test_query_missing_field():
     )
 
     assert response.status_code == 422
+
+
+def test_query_too_long():
+    response = client.post(
+        "/query",
+        json={"query": "a" * 2001},
+    )
+
+    assert response.status_code == 422
+
+
+def test_pipeline_timeout(monkeypatch):
+    def slow_query(query: str) -> dict:
+        time.sleep(6)
+
+        return {
+            "answer": "This should not be returned.",
+            "sources": [],
+            "grounded": False,
+        }
+
+    monkeypatch.setattr(pipeline, "query", slow_query)
+
+    response = client.post(
+        "/query",
+        json={"query": "Test timeout"},
+    )
+
+    assert response.status_code == 504
+    assert "timeout" in response.json()["detail"].lower()
