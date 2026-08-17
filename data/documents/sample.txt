@@ -1,0 +1,11 @@
+Voice-Enabled RAG System
+
+A Retrieval-Augmented Generation (RAG) system combines document retrieval with a language model.
+
+The system first loads documents and splits them into smaller chunks. Each chunk is converted into a numerical vector called an embedding.
+
+These embeddings are stored in a vector database. When a user asks a question, the system converts the question into an embedding and retrieves the most relevant document chunks.
+
+The retrieved information is then given to a language model, which generates the final answer.
+
+Our project uses Python, Sentence Transformers, and FAISS for the retrieval pipeline.
