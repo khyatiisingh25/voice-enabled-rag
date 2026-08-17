@@ -30,6 +30,30 @@ def test_query_success():
     assert "sources" in data
     assert "grounded" in data
 
+def test_query_returns_pipeline_contract(monkeypatch):
+    expected_response = {
+        "answer": "Machine learning is a field of AI.",
+        "sources": [
+            {
+                "title": "test-source",
+            }
+        ],
+        "grounded": True,
+    }
+
+    def mock_query(query: str) -> dict:
+        return expected_response
+
+    monkeypatch.setattr(pipeline, "query", mock_query)
+
+    response = client.post(
+        "/query",
+        json={"query": "What is machine learning?"},
+    )
+
+    assert response.status_code == 200
+    assert response.json() == expected_response
+
 
 def test_query_empty():
     response = client.post(
