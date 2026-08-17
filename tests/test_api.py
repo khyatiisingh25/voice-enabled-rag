@@ -77,3 +77,11 @@ def test_pipeline_timeout(monkeypatch):
 
     assert response.status_code == 504
     assert "timeout" in response.json()["detail"].lower()
+
+
+def test_request_id_header():
+    response = client.get("/health")
+
+    assert response.status_code == 200
+    assert "X-Request-ID" in response.headers
+    assert len(response.headers["X-Request-ID"]) == 36
