@@ -43,6 +43,22 @@ If no relevant document is found, the system returns `grounded: false`.
 
 ```text
 GET /health
+```
+
+### Query
+
+```text
+POST /query
+```
+
+Request body:
+
+```json
+{
+  "query": "What is RAG?"
+}
+```
+
 ## Setup
 
 Create and activate a virtual environment.
@@ -52,19 +68,47 @@ Create and activate a virtual environment.
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+```
 
-###Install dependencies
+### Windows PowerShell
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+### Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-###Set the Gemini API key
+### Set the Gemini API key
+
+#### macOS / Linux
+
+```bash
 export GEMINI_API_KEY="your-api-key"
+```
 
-###Start the API
+#### Windows PowerShell
+
+```powershell
+$env:GEMINI_API_KEY="your-api-key"
+```
+
+### Start the API
+
+```bash
 python -m uvicorn app.main:app --reload
+```
 
-###Run tests
+### Run tests
+
+```bash
 python -m pytest -q
+```
 
-###End-to-End Flow
+## End-to-End Flow
 
 STT → /query → RAG → Gemini → answer/sources/grounded
