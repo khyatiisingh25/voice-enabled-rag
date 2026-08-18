@@ -46,3 +46,4 @@ class RAGPipeline:
             query,
             retrieved_documents
         )
+pipeline = RAGPipeline()
