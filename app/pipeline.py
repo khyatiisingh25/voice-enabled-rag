@@ -1,16 +1,49 @@
-class Pipeline:
+from app.rag.loader import load_documents
+from app.rag.chunker import chunk_text
+from app.rag.embeddings import create_embedding_model, create_embeddings
+from app.rag.retriever import Retriever
+from app.rag.generator import generate_answer
+
+
+class RAGPipeline:
+    def __init__(self):
+        self.documents = load_documents()
+        self.model = create_embedding_model()
+
+        self.chunks = []
+
+        for document in self.documents:
+            chunks = chunk_text(document["text"])
+
+            for chunk in chunks:
+                self.chunks.append({
+                    "text": chunk,
+                    "source": document["source"],
+                })
+
+        embeddings = create_embeddings(
+            self.model,
+            [chunk["text"] for chunk in self.chunks]
+        )
+
+        self.retriever = Retriever(
+            embeddings,
+            self.chunks
+        )
+
     def query(self, query: str) -> dict:
-        """
-        Execute the query pipeline.
+        query_embedding = create_embeddings(
+            self.model,
+            [query]
+        )
 
-        This is currently a mock implementation.
-        Khyati's real RAG pipeline will be integrated here later.
-        """
-        return {
-            "answer": f"Mock answer for: {query}",
-            "sources": [],
-            "grounded": False,
-        }
+        retrieved_documents = self.retriever.search(
+            query_embedding,
+            top_k=3
+        )
 
-
-pipeline = Pipeline()
+        return generate_answer(
+            query,
+            retrieved_documents
+        )
+pipeline = RAGPipeline()
