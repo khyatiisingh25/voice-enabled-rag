@@ -85,3 +85,12 @@ STT → /query → RAG → Gemini → answer/sources/grounded
 ## Team
 
 Team Zero Signal
+## Setup
+
+Clone the repository and enter the project directory.
+
+Create and activate a virtual environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
