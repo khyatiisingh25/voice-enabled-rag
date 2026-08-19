@@ -1,0 +1,60 @@
+import statistics
+import time
+
+from app.pipeline import pipeline
+
+
+QUERIES = [
+    "What is RAG?",
+    "How does RAG work?",
+    "What is retrieval augmented generation?",
+    "What is the purpose of embeddings?",
+    "How does the system create embeddings?",
+    "What does FAISS do?",
+    "How does vector search work?",
+    "What is semantic search?",
+    "How are documents retrieved?",
+    "What is the role of the retriever?",
+    "How does the system find relevant documents?",
+    "What is a vector database?",
+    "How does relevance filtering work?",
+    "What happens when a query is unsupported?",
+    "How does the system generate an answer?",
+    "What makes an answer grounded?",
+    "What is the RAG pipeline?",
+    "How does the query move through the system?",
+    "What are the sources returned by the API?",
+    "How does the system handle irrelevant questions?",
+]
+
+
+def percentile(sorted_times, percentile):
+    index = int((percentile / 100) * len(sorted_times)) - 1
+    index = max(0, min(index, len(sorted_times) - 1))
+    return sorted_times[index]
+
+
+def benchmark():
+    times = []
+
+    for query in QUERIES:
+        start = time.perf_counter()
+
+        pipeline.query(query)
+
+        elapsed_ms = (time.perf_counter() - start) * 1000
+        times.append(elapsed_ms)
+
+        print(f"{elapsed_ms:.2f} ms | {query}")
+
+    ordered = sorted(times)
+
+    print("\n=== LATENCY RESULTS ===")
+    print(f"Queries: {len(times)}")
+    print(f"P50:  {statistics.median(ordered):.2f} ms")
+    print(f"P70:  {percentile(ordered, 70):.2f} ms")
+    print(f"P100: {max(ordered):.2f} ms")
+
+
+if __name__ == "__main__":
+    benchmark()
