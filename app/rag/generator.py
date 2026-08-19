@@ -1,12 +1,16 @@
 import os
+import time
 
 from google import genai
 
 
 MODEL_NAME = "gemini-3.5-flash-lite"
+MAX_GENERATION_ATTEMPTS = 3
+RETRY_DELAY_SECONDS = 0.5
 
 
 def generate_answer(query: str, retrieved_documents: list) -> dict:
+
     if not retrieved_documents:
         return {
             "answer": "I could not find relevant information in the available documents.",
@@ -19,7 +23,6 @@ def generate_answer(query: str, retrieved_documents: list) -> dict:
         raise RuntimeError("GEMINI_API_KEY is not configured")
 
     context_parts = []
-
     for index, document in enumerate(retrieved_documents, start=1):
         context_parts.append(
             f"[Source {index}]\n{document['text']}"
@@ -32,6 +35,7 @@ def generate_answer(query: str, retrieved_documents: list) -> dict:
 Answer the user's question using ONLY the retrieved context below.
 
 Rules:
+
 - Do not use outside knowledge.
 - Do not invent facts.
 - If the context does not contain enough information to answer the question, say:
@@ -41,18 +45,29 @@ Rules:
 - Do not include source labels in the answer.
 
 Retrieved context:
+
 {context}
 
 User question:
+
 {query}
+
 """
 
     client = genai.Client(api_key=api_key)
 
-    response = client.models.generate_content(
-        model=MODEL_NAME,
-        contents=prompt,
-    )
+    response = None
+    for attempt in range(MAX_GENERATION_ATTEMPTS):
+        try:
+            response = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=prompt,
+            )
+            break
+        except Exception:
+            if attempt == MAX_GENERATION_ATTEMPTS - 1:
+                raise
+            time.sleep(RETRY_DELAY_SECONDS)
 
     answer = (response.text or "").strip()
 
