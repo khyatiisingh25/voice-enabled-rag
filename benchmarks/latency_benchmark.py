@@ -2,6 +2,8 @@ import statistics
 import time
 
 from app.pipeline import pipeline
+from app.rag.embeddings import create_embeddings
+from app.rag.generator import generate_answer
 
 
 QUERIES = [
@@ -35,25 +37,89 @@ def percentile(sorted_times, percentile):
 
 
 def benchmark():
-    times = []
+    embedding_times = []
+    retrieval_times = []
+    generation_times = []
+    total_times = []
+
+    print("\n=== LATENCY BREAKDOWN ===")
 
     for query in QUERIES:
+
+        # --------------------------------------------------
+        # 1. Query embedding
+        # --------------------------------------------------
         start = time.perf_counter()
 
-        pipeline.query(query)
+        query_embedding = create_embeddings(
+            pipeline.model,
+            [query],
+        )
 
-        elapsed_ms = (time.perf_counter() - start) * 1000
-        times.append(elapsed_ms)
+        embedding_ms = (time.perf_counter() - start) * 1000
 
-        print(f"{elapsed_ms:.2f} ms | {query}")
+        # --------------------------------------------------
+        # 2. FAISS retrieval
+        # --------------------------------------------------
+        start = time.perf_counter()
 
-    ordered = sorted(times)
+        retrieved_documents = pipeline.retriever.search(
+            query_embedding,
+            top_k=3,
+        )
 
-    print("\n=== LATENCY RESULTS ===")
-    print(f"Queries: {len(times)}")
-    print(f"P50:  {statistics.median(ordered):.2f} ms")
-    print(f"P70:  {percentile(ordered, 70):.2f} ms")
-    print(f"P100: {max(ordered):.2f} ms")
+        retrieval_ms = (time.perf_counter() - start) * 1000
+
+        # --------------------------------------------------
+        # 3. LLM generation
+        # --------------------------------------------------
+        start = time.perf_counter()
+
+        generate_answer(
+            query,
+            retrieved_documents,
+        )
+
+        generation_ms = (time.perf_counter() - start) * 1000
+
+        # --------------------------------------------------
+        # 4. Total query latency
+        # --------------------------------------------------
+        total_ms = (
+            embedding_ms
+            + retrieval_ms
+            + generation_ms
+        )
+
+        embedding_times.append(embedding_ms)
+        retrieval_times.append(retrieval_ms)
+        generation_times.append(generation_ms)
+        total_times.append(total_ms)
+
+        print(
+            f"\n{query}"
+            f"\n  Embedding : {embedding_ms:.2f} ms"
+            f"\n  Retrieval : {retrieval_ms:.2f} ms"
+            f"\n  Generation: {generation_ms:.2f} ms"
+            f"\n  Total     : {total_ms:.2f} ms"
+        )
+
+    print("\n=== LATENCY SUMMARY ===")
+
+    stages = {
+        "Embedding": embedding_times,
+        "Retrieval": retrieval_times,
+        "Generation": generation_times,
+        "Total": total_times,
+    }
+
+    for name, times in stages.items():
+        ordered = sorted(times)
+
+        print(f"\n{name}")
+        print(f"  P50 : {statistics.median(ordered):.2f} ms")
+        print(f"  P70 : {percentile(ordered, 70):.2f} ms")
+        print(f"  P100: {max(ordered):.2f} ms")
 
 
 if __name__ == "__main__":
