@@ -4,25 +4,62 @@ Voice-Enabled RAG system built by Team Zero Signal for Hacker House Goa 2026.
 
 ## Overview
 
-The system combines Speech-to-Text (STT), Retrieval-Augmented Generation (RAG), FastAPI, and Gemini to answer questions using information retrieved from project documents.
+The system combines Speech-to-Text (STT), Retrieval-Augmented Generation (RAG), FastAPI, and grounded answer generation to answer questions using information retrieved from project documents.
+
+The latency-critical production RAG path is designed to operate without requiring Gemini generation. Gemini remains available for the generation path and related experiments/benchmarks.
 
 ## Architecture
 
 Voice Input
+
 ↓
+
 Speech-to-Text (STT)
+
 ↓
+
 Clean Transcript
+
 ↓
+
 POST /query
+
 ↓
-RAG Retrieval
+
+Query Embedding
+
 ↓
-Relevance Filtering
+
+FAISS Retrieval
+
 ↓
-Gemini
+
+Deterministic Grounded Answer
+
 ↓
+
 answer + sources + grounded
+
+### Latency-Critical Production Boundary
+
+The production RAG latency measurement starts when the query text is available after STT and ends when the grounded RAG answer is produced.
+
+Included in the RAG latency measurement:
+
+- Query embedding generation
+- FAISS retrieval
+- Deterministic fallback answer selection
+
+Excluded from the RAG latency measurement:
+
+- Audio capture
+- Speech-to-Text (STT)
+- STT preprocessing
+- Network/API transport outside the RAG pipeline
+- Model initialization / cold start
+- Gemini generation
+
+STT latency is reported separately from production RAG latency.
 
 ## RAG Pipeline
 
@@ -35,80 +72,7 @@ Retrieval uses:
 
 Low-relevance results are rejected.
 
-If no relevant document is found, the system returns `grounded: false`.
-
-## API
-
-### Health Check
+If no relevant document is found, the system returns:
 
 ```text
-GET /health
-```
-
-### Query
-
-```text
-POST /query
-```
-
-Request body:
-
-```json
-{
-  "query": "What is RAG?"
-}
-```
-
-## Setup
-
-Create and activate a virtual environment.
-
-### macOS / Linux
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-```
-
-### Windows PowerShell
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-### Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### Set the Gemini API key
-
-#### macOS / Linux
-
-```bash
-export GEMINI_API_KEY="your-api-key"
-```
-
-#### Windows PowerShell
-
-```powershell
-$env:GEMINI_API_KEY="your-api-key"
-```
-
-### Start the API
-
-```bash
-python -m uvicorn app.main:app --reload
-```
-
-### Run tests
-
-```bash
-python -m pytest -q
-```
-
-## End-to-End Flow
-
-STT → /query → RAG → Gemini → answer/sources/grounded
+grounded: false
