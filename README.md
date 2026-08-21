@@ -67,7 +67,7 @@ Documents are loaded from `data/documents/`, split into chunks, converted into e
 
 Retrieval uses:
 
-- `top_k = 3`
+- `top_k = 10`
 - `score_threshold = 0.20`
 
 Low-relevance results are rejected.
