@@ -216,3 +216,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+experiments/rag_benchmark/e2e_rag_quality_results.json
