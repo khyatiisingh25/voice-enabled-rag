@@ -1,0 +1,447 @@
+{
+  "500/50": {
+    "3": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.68,
+          "mrr": 0.5066666666666666
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.68,
+          "mrr": 0.5066666666666666
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.68,
+          "mrr": 0.5066666666666666
+        }
+      }
+    },
+    "5": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5298333333333334
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5298333333333334
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5298333333333334
+        }
+      }
+    },
+    "10": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5596507936507936
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.557984126984127
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.557984126984127
+        }
+      }
+    }
+  },
+  "300/50": {
+    "3": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.62,
+          "recall@5": 0.62,
+          "mrr": 0.4683333333333334
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.62,
+          "recall@5": 0.62,
+          "mrr": 0.4683333333333334
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.62,
+          "recall@5": 0.62,
+          "mrr": 0.4683333333333334
+        }
+      }
+    },
+    "5": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.61,
+          "recall@5": 0.76,
+          "mrr": 0.5
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.61,
+          "recall@5": 0.76,
+          "mrr": 0.5
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.61,
+          "recall@5": 0.76,
+          "mrr": 0.5
+        }
+      }
+    },
+    "10": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.61,
+          "recall@5": 0.76,
+          "mrr": 0.5289563492063492
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.61,
+          "recall@5": 0.76,
+          "mrr": 0.5272896825396826
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.35,
+          "recall@3": 0.61,
+          "recall@5": 0.76,
+          "mrr": 0.5272896825396826
+        }
+      }
+    }
+  },
+  "800/100": {
+    "3": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.69,
+          "recall@5": 0.69,
+          "mrr": 0.51
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.69,
+          "recall@5": 0.69,
+          "mrr": 0.51
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.69,
+          "recall@5": 0.69,
+          "mrr": 0.51
+        }
+      }
+    },
+    "5": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.79,
+          "mrr": 0.5341666666666667
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.79,
+          "mrr": 0.5341666666666667
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.79,
+          "mrr": 0.5341666666666667
+        }
+      }
+    },
+    "10": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.79,
+          "mrr": 0.5647103174603175
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.79,
+          "mrr": 0.5630436507936508
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.68,
+          "recall@5": 0.79,
+          "mrr": 0.5630436507936508
+        }
+      }
+    }
+  },
+  "sentence": {
+    "3": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.67,
+          "mrr": 0.51
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.67,
+          "mrr": 0.51
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.67,
+          "recall@5": 0.67,
+          "mrr": 0.51
+        }
+      }
+    },
+    "5": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.66,
+          "recall@5": 0.78,
+          "mrr": 0.5356666666666667
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.66,
+          "recall@5": 0.78,
+          "mrr": 0.5356666666666667
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.66,
+          "recall@5": 0.78,
+          "mrr": 0.5356666666666667
+        }
+      }
+    },
+    "10": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.66,
+          "recall@5": 0.78,
+          "mrr": 0.5552857142857143
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.66,
+          "recall@5": 0.78,
+          "mrr": 0.5538571428571428
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.38,
+          "recall@3": 0.66,
+          "recall@5": 0.78,
+          "mrr": 0.5538571428571428
+        }
+      }
+    }
+  },
+  "metadata": {
+    "3": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.68,
+          "recall@5": 0.68,
+          "mrr": 0.49666666666666665
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.68,
+          "recall@5": 0.68,
+          "mrr": 0.49666666666666665
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.68,
+          "recall@5": 0.68,
+          "mrr": 0.49666666666666665
+        }
+      }
+    },
+    "5": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5208333333333334
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5208333333333334
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5208333333333334
+        }
+      }
+    },
+    "10": {
+      "0.1": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5516150793650794
+        }
+      },
+      "0.2": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5499484126984127
+        }
+      },
+      "0.3": {
+        "queries_evaluated": 100,
+        "metrics": {
+          "recall@1": 0.36,
+          "recall@3": 0.67,
+          "recall@5": 0.78,
+          "mrr": 0.5499484126984127
+        }
+      }
+    }
+  }
+}
