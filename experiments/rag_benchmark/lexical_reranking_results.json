@@ -1,0 +1,51 @@
+{
+  "configuration": {
+    "strategy": "800/100",
+    "candidate_top_k": 10,
+    "final_top_k": 3,
+    "threshold": 0.2
+  },
+  "queries_evaluated": 100,
+  "weight_results": {
+    "1.00/0.00": {
+      "semantic_weight": 1.0,
+      "lexical_weight": 0.0,
+      "metrics": {
+        "recall@1": 0.38,
+        "recall@3": 0.68,
+        "recall@5": 0.68,
+        "mrr": 0.5066666666666666
+      }
+    },
+    "0.90/0.10": {
+      "semantic_weight": 0.9,
+      "lexical_weight": 0.1,
+      "metrics": {
+        "recall@1": 0.39,
+        "recall@3": 0.65,
+        "recall@5": 0.65,
+        "mrr": 0.5033333333333334
+      }
+    },
+    "0.80/0.20": {
+      "semantic_weight": 0.8,
+      "lexical_weight": 0.2,
+      "metrics": {
+        "recall@1": 0.38,
+        "recall@3": 0.65,
+        "recall@5": 0.65,
+        "mrr": 0.49833333333333335
+      }
+    },
+    "0.70/0.30": {
+      "semantic_weight": 0.7,
+      "lexical_weight": 0.3,
+      "metrics": {
+        "recall@1": 0.35,
+        "recall@3": 0.66,
+        "recall@5": 0.66,
+        "mrr": 0.485
+      }
+    }
+  }
+}

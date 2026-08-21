@@ -110,7 +110,7 @@ class RAGPipeline:
         retrieved_documents = (
             self.retriever.search(
                 query_embedding,
-                top_k=3,
+                top_k=10,
             )
         )
 
