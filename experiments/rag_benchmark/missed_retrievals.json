@@ -1,0 +1,733 @@
+{
+  "configuration": {
+    "strategy": "800/100",
+    "top_k": 5,
+    "threshold": 0.2
+  },
+  "queries_evaluated": 100,
+  "missed_queries": 21,
+  "miss_rate": 0.21,
+  "missed": [
+    {
+      "sample_index": 6,
+      "query_id": 255,
+      "query": "+what is centure",
+      "relevant_passage_indices": [
+        6
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 2,
+          "score": 0.28315162658691406
+        },
+        {
+          "rank": 2,
+          "passage_index": 5,
+          "score": 0.26999932527542114
+        }
+      ]
+    },
+    {
+      "sample_index": 16,
+      "query_id": 846,
+      "query": "2 liters is how many ounces",
+      "relevant_passage_indices": [
+        3
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 8,
+          "score": 0.8478848934173584
+        },
+        {
+          "rank": 2,
+          "passage_index": 5,
+          "score": 0.8129402995109558
+        },
+        {
+          "rank": 3,
+          "passage_index": 2,
+          "score": 0.8022419214248657
+        },
+        {
+          "rank": 4,
+          "passage_index": 9,
+          "score": 0.7437130212783813
+        },
+        {
+          "rank": 5,
+          "passage_index": 1,
+          "score": 0.708992600440979
+        }
+      ]
+    },
+    {
+      "sample_index": 31,
+      "query_id": 1550,
+      "query": "5k how long",
+      "relevant_passage_indices": [
+        1
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 5,
+          "score": 0.6660205721855164
+        },
+        {
+          "rank": 2,
+          "passage_index": 4,
+          "score": 0.6166216731071472
+        },
+        {
+          "rank": 3,
+          "passage_index": 8,
+          "score": 0.5920946598052979
+        },
+        {
+          "rank": 4,
+          "passage_index": 3,
+          "score": 0.5818848013877869
+        },
+        {
+          "rank": 5,
+          "passage_index": 9,
+          "score": 0.5576094388961792
+        }
+      ]
+    },
+    {
+      "sample_index": 36,
+      "query_id": 1819,
+      "query": "A person with a pH below 7.35 is considered to be in",
+      "relevant_passage_indices": [
+        1
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 9,
+          "score": 0.6572054624557495
+        },
+        {
+          "rank": 2,
+          "passage_index": 6,
+          "score": 0.6360079050064087
+        },
+        {
+          "rank": 3,
+          "passage_index": 8,
+          "score": 0.6340606212615967
+        },
+        {
+          "rank": 4,
+          "passage_index": 4,
+          "score": 0.6058551073074341
+        },
+        {
+          "rank": 5,
+          "passage_index": 0,
+          "score": 0.5785763263702393
+        }
+      ]
+    },
+    {
+      "sample_index": 37,
+      "query_id": 1956,
+      "query": "All of the following resulted from the civil rights movement except",
+      "relevant_passage_indices": [
+        4
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 0,
+          "score": 0.784683108329773
+        },
+        {
+          "rank": 2,
+          "passage_index": 7,
+          "score": 0.650903582572937
+        },
+        {
+          "rank": 3,
+          "passage_index": 1,
+          "score": 0.6134440898895264
+        },
+        {
+          "rank": 4,
+          "passage_index": 3,
+          "score": 0.6056650876998901
+        },
+        {
+          "rank": 5,
+          "passage_index": 8,
+          "score": 0.561561107635498
+        }
+      ]
+    },
+    {
+      "sample_index": 39,
+      "query_id": 2057,
+      "query": "Arlena name meaning",
+      "relevant_passage_indices": [
+        0,
+        4
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 7,
+          "score": 0.7906762361526489
+        },
+        {
+          "rank": 2,
+          "passage_index": 6,
+          "score": 0.783768892288208
+        },
+        {
+          "rank": 3,
+          "passage_index": 5,
+          "score": 0.7747917175292969
+        },
+        {
+          "rank": 4,
+          "passage_index": 8,
+          "score": 0.757910430431366
+        },
+        {
+          "rank": 5,
+          "passage_index": 9,
+          "score": 0.6839307546615601
+        }
+      ]
+    },
+    {
+      "sample_index": 44,
+      "query_id": 2798,
+      "query": "Does Suddenlink Carry ESPN3",
+      "relevant_passage_indices": [
+        6
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 3,
+          "score": 0.8086447715759277
+        },
+        {
+          "rank": 2,
+          "passage_index": 7,
+          "score": 0.7994540333747864
+        },
+        {
+          "rank": 3,
+          "passage_index": 8,
+          "score": 0.7949819564819336
+        },
+        {
+          "rank": 4,
+          "passage_index": 1,
+          "score": 0.7713693380355835
+        },
+        {
+          "rank": 5,
+          "passage_index": 9,
+          "score": 0.72074294090271
+        }
+      ]
+    },
+    {
+      "sample_index": 47,
+      "query_id": 3151,
+      "query": "Ginevra name meaning",
+      "relevant_passage_indices": [
+        0
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 1,
+          "score": 0.9230520725250244
+        },
+        {
+          "rank": 2,
+          "passage_index": 3,
+          "score": 0.9175975322723389
+        },
+        {
+          "rank": 3,
+          "passage_index": 9,
+          "score": 0.8934690952301025
+        },
+        {
+          "rank": 4,
+          "passage_index": 4,
+          "score": 0.8261315822601318
+        },
+        {
+          "rank": 5,
+          "passage_index": 2,
+          "score": 0.8111858367919922
+        }
+      ]
+    },
+    {
+      "sample_index": 59,
+      "query_id": 4578,
+      "query": "Incubation period for gonorrhea",
+      "relevant_passage_indices": [
+        0
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 4,
+          "score": 0.8161728382110596
+        },
+        {
+          "rank": 2,
+          "passage_index": 3,
+          "score": 0.8161728382110596
+        },
+        {
+          "rank": 3,
+          "passage_index": 6,
+          "score": 0.790113091468811
+        },
+        {
+          "rank": 4,
+          "passage_index": 7,
+          "score": 0.7768179178237915
+        },
+        {
+          "rank": 5,
+          "passage_index": 1,
+          "score": 0.7624108791351318
+        }
+      ]
+    },
+    {
+      "sample_index": 60,
+      "query_id": 4642,
+      "query": "Is Cait Jenner Dating Candis",
+      "relevant_passage_indices": [
+        0
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 8,
+          "score": 0.8589220643043518
+        },
+        {
+          "rank": 2,
+          "passage_index": 9,
+          "score": 0.8057523369789124
+        },
+        {
+          "rank": 3,
+          "passage_index": 7,
+          "score": 0.789179801940918
+        },
+        {
+          "rank": 4,
+          "passage_index": 5,
+          "score": 0.7285764217376709
+        },
+        {
+          "rank": 5,
+          "passage_index": 6,
+          "score": 0.7283525466918945
+        }
+      ]
+    },
+    {
+      "sample_index": 61,
+      "query_id": 4696,
+      "query": "Is the Louisiana sales tax 4.75",
+      "relevant_passage_indices": [
+        0
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 4,
+          "score": 0.8311516046524048
+        },
+        {
+          "rank": 2,
+          "passage_index": 5,
+          "score": 0.8033559322357178
+        },
+        {
+          "rank": 3,
+          "passage_index": 8,
+          "score": 0.7936251759529114
+        },
+        {
+          "rank": 4,
+          "passage_index": 7,
+          "score": 0.7873028516769409
+        },
+        {
+          "rank": 5,
+          "passage_index": 9,
+          "score": 0.7850662469863892
+        }
+      ]
+    },
+    {
+      "sample_index": 63,
+      "query_id": 4757,
+      "query": "Joan Hackett Cause of Death",
+      "relevant_passage_indices": [
+        2
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 8,
+          "score": 0.832805871963501
+        },
+        {
+          "rank": 2,
+          "passage_index": 9,
+          "score": 0.8289173245429993
+        },
+        {
+          "rank": 3,
+          "passage_index": 1,
+          "score": 0.7639800310134888
+        },
+        {
+          "rank": 4,
+          "passage_index": 0,
+          "score": 0.7574220895767212
+        },
+        {
+          "rank": 5,
+          "passage_index": 6,
+          "score": 0.7519457936286926
+        }
+      ]
+    },
+    {
+      "sample_index": 69,
+      "query_id": 5476,
+      "query": "Pelvic inflammatory disease (PID) is an infection that is often caused by a sexually transmitted disease.",
+      "relevant_passage_indices": [
+        0
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 4,
+          "score": 0.9298254251480103
+        },
+        {
+          "rank": 2,
+          "passage_index": 5,
+          "score": 0.9227232336997986
+        },
+        {
+          "rank": 3,
+          "passage_index": 3,
+          "score": 0.9092926979064941
+        },
+        {
+          "rank": 4,
+          "passage_index": 8,
+          "score": 0.8996345400810242
+        },
+        {
+          "rank": 5,
+          "passage_index": 9,
+          "score": 0.89015793800354
+        }
+      ]
+    },
+    {
+      "sample_index": 71,
+      "query_id": 5559,
+      "query": "Prader-Willi syndrome is usually caused by quizlet",
+      "relevant_passage_indices": [
+        7
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 9,
+          "score": 0.870395839214325
+        },
+        {
+          "rank": 2,
+          "passage_index": 6,
+          "score": 0.8507727384567261
+        },
+        {
+          "rank": 3,
+          "passage_index": 1,
+          "score": 0.8380419611930847
+        },
+        {
+          "rank": 4,
+          "passage_index": 5,
+          "score": 0.8235138654708862
+        },
+        {
+          "rank": 5,
+          "passage_index": 4,
+          "score": 0.8062523007392883
+        }
+      ]
+    },
+    {
+      "sample_index": 73,
+      "query_id": 5699,
+      "query": "Research on deindividuation suggests that when people are part of a crowd, they become",
+      "relevant_passage_indices": [
+        1
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 9,
+          "score": 0.7794521450996399
+        },
+        {
+          "rank": 2,
+          "passage_index": 4,
+          "score": 0.7152050733566284
+        },
+        {
+          "rank": 3,
+          "passage_index": 0,
+          "score": 0.7103902697563171
+        },
+        {
+          "rank": 4,
+          "passage_index": 2,
+          "score": 0.6895519495010376
+        },
+        {
+          "rank": 5,
+          "passage_index": 5,
+          "score": 0.6819063425064087
+        }
+      ]
+    },
+    {
+      "sample_index": 75,
+      "query_id": 5772,
+      "query": "SOAPS definition",
+      "relevant_passage_indices": [
+        0
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 3,
+          "score": 0.8078645467758179
+        },
+        {
+          "rank": 2,
+          "passage_index": 1,
+          "score": 0.7698087096214294
+        },
+        {
+          "rank": 3,
+          "passage_index": 2,
+          "score": 0.7598288059234619
+        },
+        {
+          "rank": 4,
+          "passage_index": 9,
+          "score": 0.7389295101165771
+        },
+        {
+          "rank": 5,
+          "passage_index": 4,
+          "score": 0.7047580480575562
+        }
+      ]
+    },
+    {
+      "sample_index": 82,
+      "query_id": 6234,
+      "query": "The major cellular components in lymph are",
+      "relevant_passage_indices": [
+        6
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 3,
+          "score": 0.7564725279808044
+        },
+        {
+          "rank": 2,
+          "passage_index": 5,
+          "score": 0.6517816781997681
+        },
+        {
+          "rank": 3,
+          "passage_index": 8,
+          "score": 0.6476447582244873
+        },
+        {
+          "rank": 4,
+          "passage_index": 9,
+          "score": 0.6440306901931763
+        },
+        {
+          "rank": 5,
+          "passage_index": 4,
+          "score": 0.6418728232383728
+        }
+      ]
+    },
+    {
+      "sample_index": 85,
+      "query_id": 6421,
+      "query": "Thyroid hormone is somewhat unique in that it is a",
+      "relevant_passage_indices": [
+        0
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 2,
+          "score": 0.6894850730895996
+        },
+        {
+          "rank": 2,
+          "passage_index": 6,
+          "score": 0.6211309432983398
+        },
+        {
+          "rank": 3,
+          "passage_index": 3,
+          "score": 0.620776891708374
+        },
+        {
+          "rank": 4,
+          "passage_index": 1,
+          "score": 0.5803530216217041
+        },
+        {
+          "rank": 5,
+          "passage_index": 7,
+          "score": 0.578106164932251
+        }
+      ]
+    },
+    {
+      "sample_index": 94,
+      "query_id": 7131,
+      "query": "What does the name Roman mean",
+      "relevant_passage_indices": [
+        3
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 0,
+          "score": 0.860168993473053
+        },
+        {
+          "rank": 2,
+          "passage_index": 0,
+          "score": 0.8547348380088806
+        },
+        {
+          "rank": 3,
+          "passage_index": 4,
+          "score": 0.8346903324127197
+        },
+        {
+          "rank": 4,
+          "passage_index": 8,
+          "score": 0.8131229877471924
+        },
+        {
+          "rank": 5,
+          "passage_index": 1,
+          "score": 0.7691221237182617
+        }
+      ]
+    },
+    {
+      "sample_index": 96,
+      "query_id": 7368,
+      "query": "What is septic disease",
+      "relevant_passage_indices": [
+        1
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 0,
+          "score": 0.6727566123008728
+        },
+        {
+          "rank": 2,
+          "passage_index": 2,
+          "score": 0.5758464932441711
+        },
+        {
+          "rank": 3,
+          "passage_index": 7,
+          "score": 0.5730650424957275
+        },
+        {
+          "rank": 4,
+          "passage_index": 9,
+          "score": 0.5723490118980408
+        },
+        {
+          "rank": 5,
+          "passage_index": 8,
+          "score": 0.5685670971870422
+        }
+      ]
+    },
+    {
+      "sample_index": 99,
+      "query_id": 7582,
+      "query": "What is the meaning of the name Mitchell",
+      "relevant_passage_indices": [
+        8
+      ],
+      "ranked_results": [
+        {
+          "rank": 1,
+          "passage_index": 2,
+          "score": 0.927980899810791
+        },
+        {
+          "rank": 2,
+          "passage_index": 3,
+          "score": 0.9221837520599365
+        },
+        {
+          "rank": 3,
+          "passage_index": 0,
+          "score": 0.9167606830596924
+        },
+        {
+          "rank": 4,
+          "passage_index": 6,
+          "score": 0.9105600118637085
+        },
+        {
+          "rank": 5,
+          "passage_index": 1,
+          "score": 0.8981450796127319
+        }
+      ]
+    }
+  ]
+}
