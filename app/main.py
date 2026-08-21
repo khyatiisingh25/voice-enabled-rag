@@ -1,7 +1,7 @@
 import asyncio
 import uuid
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from pydantic import BaseModel, Field
 
 from app.core.exceptions import (
@@ -10,6 +10,7 @@ from app.core.exceptions import (
 )
 from app.core.logging import configure_logging, get_logger
 from app.pipeline import pipeline
+from app.Voice.stt import transcribe
 
 
 PIPELINE_TIMEOUT_SECONDS = 5.0
@@ -96,6 +97,53 @@ async def execute_pipeline(query: str) -> dict:
 def health():
     return {"status": "ok"}
 
+
+
+@app.post("/voice/query", response_model=QueryResponse)
+async def voice_query(audio: UploadFile = File(...)):
+    try:
+        import tempfile
+        from pathlib import Path
+
+        suffix = Path(audio.filename or "").suffix or ".wav"
+
+        with tempfile.NamedTemporaryFile(
+            suffix=suffix,
+            delete=False,
+        ) as temp_file:
+            temp_path = Path(temp_file.name)
+            temp_file.write(await audio.read())
+
+        try:
+            transcript = await asyncio.to_thread(
+                transcribe,
+                str(temp_path),
+            )
+
+            if not transcript.strip():
+                raise HTTPException(
+                    status_code=422,
+                    detail="Speech-to-text returned an empty transcript.",
+                )
+
+            return await execute_pipeline(transcript)
+
+        finally:
+            temp_path.unlink(missing_ok=True)
+
+    except HTTPException:
+        raise
+    except PipelineTimeoutError as exc:
+        raise HTTPException(
+            status_code=504,
+            detail=str(exc),
+        ) from exc
+    except Exception as exc:
+        logger.exception("voice_query_failed")
+        raise HTTPException(
+            status_code=500,
+            detail="Voice query processing failed.",
+        ) from exc
 
 @app.post("/query", response_model=QueryResponse)
 async def query(request: QueryRequest):
