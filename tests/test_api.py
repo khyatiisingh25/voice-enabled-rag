@@ -109,3 +109,38 @@ def test_request_id_header():
     assert response.status_code == 200
     assert "X-Request-ID" in response.headers
     assert len(response.headers["X-Request-ID"]) == 36
+
+def test_voice_query_contract(monkeypatch):
+    expected_transcript = "What is RAG?"
+
+    def fake_transcribe(audio_path):
+        return expected_transcript
+
+    def fake_query(query):
+        assert query == expected_transcript
+        return {
+            "answer": "A Retrieval-Augmented Generation (RAG) system combines document retrieval with a language model.",
+            "sources": [{"source": "test-source", "score": 0.9}],
+            "grounded": True,
+        }
+
+    monkeypatch.setattr("app.main.transcribe", fake_transcribe)
+    monkeypatch.setattr(pipeline, "query", fake_query)
+
+    response = client.post(
+        "/voice/query",
+        files={
+            "audio": (
+                "test.wav",
+                b"fake-audio-data",
+                "audio/wav",
+            )
+        },
+    )
+
+    assert response.status_code == 200
+    data = response.json()
+
+    assert data["answer"].startswith("A Retrieval-Augmented")
+    assert data["grounded"] is True
+    assert len(data["sources"]) == 1
