@@ -1,0 +1,53 @@
+{
+  "configuration": {
+    "chunking": "production chunk_text()",
+    "threshold": 0.2,
+    "top_k_values": [
+      3,
+      5,
+      10
+    ]
+  },
+  "queries_evaluated": 100,
+  "results": {
+    "3": {
+      "metrics": {
+        "recall@1": 0.38,
+        "recall@3": 0.68,
+        "recall@5": 0.68,
+        "mrr": 0.5066666666666666
+      },
+      "retrieval_latency_ms": {
+        "mean": 0.0736869999764167,
+        "min": 0.054600000112259295,
+        "max": 0.17529999968246557
+      }
+    },
+    "5": {
+      "metrics": {
+        "recall@1": 0.38,
+        "recall@3": 0.67,
+        "recall@5": 0.78,
+        "mrr": 0.5298333333333334
+      },
+      "retrieval_latency_ms": {
+        "mean": 0.020522000049822964,
+        "min": 0.013699999726668466,
+        "max": 0.12380000043776818
+      }
+    },
+    "10": {
+      "metrics": {
+        "recall@1": 0.38,
+        "recall@3": 0.67,
+        "recall@5": 0.78,
+        "mrr": 0.557984126984127
+      },
+      "retrieval_latency_ms": {
+        "mean": 0.01960400001735252,
+        "min": 0.013500000022759195,
+        "max": 0.053700000535172876
+      }
+    }
+  }
+}
