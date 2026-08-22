@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
-const API_BASE_URL = "/api";
+const API_BASE_URL = "https://voice-enabled-rag-production.up.railway.app";
 
 function App() {
   const [language, setLanguage] = useState("English");
