@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "http://127.0.0.1:8000";
 
 function App() {
   const [language, setLanguage] = useState("English");
@@ -148,7 +148,7 @@ function App() {
     try {
       const formData = new FormData();
 
-      formData.append("file", file);
+      formData.append("audio", file);
       formData.append("language", language.toLowerCase());
 
       const response = await fetch(`${API_BASE_URL}/voice/query`, {
