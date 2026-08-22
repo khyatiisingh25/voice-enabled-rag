@@ -144,6 +144,10 @@ def health():
 # ============================================================
 
 @app.post(
+    "/api/voice/query",
+    response_model=VoiceQueryResponse,
+)
+@app.post(
     "/voice/query",
     response_model=VoiceQueryResponse,
 )
@@ -266,6 +270,10 @@ async def voice_query(
 # TEXT QUERY
 # ============================================================
 
+@app.post(
+    "/api/query",
+    response_model=QueryResponse,
+)
 @app.post(
     "/query",
     response_model=QueryResponse,
