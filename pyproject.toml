@@ -1,0 +1,8 @@
+[project]
+name = "voice-enabled-rag"
+version = "0.1.0"
+description = "Voice-enabled RAG application"
+requires-python = ">=3.11,<3.13"
+
+[tool.fastapi]
+entrypoint = "app.main:app"
