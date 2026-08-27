@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
-const API_BASE_URL = "https://voice-enabled-rag-production-010a.up.railway.app";
+const API_BASE_URL = "https://voice-enabled-rag-production-860a.up.railway.app";
 
 function App() {
   const [language, setLanguage] = useState("English");
@@ -108,12 +108,10 @@ function App() {
         );
 
         setAudioFile(file);
-
         await sendVoiceQuery(file);
       };
 
       mediaRecorderRef.current = mediaRecorder;
-
       mediaRecorder.start();
 
       setRecording(true);
@@ -225,7 +223,6 @@ function App() {
     if (!file) return;
 
     setAudioFile(file);
-
     await sendVoiceQuery(file);
   };
 
@@ -258,13 +255,11 @@ function App() {
 
   return (
     <div className="app">
-
       {/* Background decoration */}
       <div className="glow glow-one"></div>
       <div className="glow glow-two"></div>
 
       <main className="container">
-
         {/* =========================
             HEADER
         ========================== */}
@@ -304,9 +299,7 @@ function App() {
               <select
                 id="language"
                 value={language}
-                onChange={(e) =>
-                  setLanguage(e.target.value)
-                }
+                onChange={(e) => setLanguage(e.target.value)}
                 disabled={recording || loading}
               >
                 <option>English</option>
@@ -353,53 +346,32 @@ function App() {
                 onChange={handleAudioUpload}
                 disabled={loading || recording}
               />
-
             </label>
-
           </div>
 
-
-          {/* RECORDING STATUS */}
           {recording && (
             <div className="recording-status">
-
               <span className="pulse-dot"></span>
-
               Recording in progress...
-
             </div>
           )}
 
-
-          {/* FILE NAME */}
           {audioFile && !recording && (
             <div className="file-name">
-
-              Selected audio:{" "}
-
-              <strong>
-                {audioFile.name}
-              </strong>
-
+              Selected audio: <strong>{audioFile.name}</strong>
             </div>
           )}
-
 
           {/* TEXT QUERY */}
           <div className="text-query">
-
             <input
               type="text"
               value={textQuery}
-              onChange={(e) =>
-                setTextQuery(e.target.value)
-              }
+              onChange={(e) => setTextQuery(e.target.value)}
               onKeyDown={(e) => {
-
                 if (e.key === "Enter") {
                   askTextQuestion();
                 }
-
               }}
               placeholder="Or type your question here..."
               disabled={loading || recording}
@@ -480,315 +452,150 @@ function App() {
             ANSWER
         ========================== */}
         <section className="result-card answer-card">
-
           <div className="section-heading">
-
             <span>02</span>
-
-            <h2>
-              ANSWER
-            </h2>
-
+            <h2>ANSWER</h2>
 
             {grounded !== null && (
-
               <div
                 className={`grounded-badge ${
-                  grounded
-                    ? "grounded"
-                    : "not-grounded"
+                  grounded ? "grounded" : "not-grounded"
                 }`}
               >
-
-                <span>
-                  {grounded ? "●" : "○"}
-                </span>
-
-                {grounded
-                  ? "GROUNDED"
-                  : "NOT GROUNDED"}
-
+                <span>{grounded ? "●" : "○"}</span>
+                {grounded ? "GROUNDED" : "NOT GROUNDED"}
               </div>
-
             )}
-
           </div>
 
-
           <div className="result-content answer">
-
             {loading ? (
-
               <div className="loading">
-
                 <span></span>
                 <span></span>
                 <span></span>
-
                 Retrieving answer...
-
               </div>
-
             ) : answer ? (
-
               answer
-
             ) : (
-
               <span className="placeholder">
                 Your grounded answer will appear here...
               </span>
-
             )}
-
           </div>
-
         </section>
-
 
         {/* =========================
             SOURCES
         ========================== */}
         <section className="result-card">
-
           <div className="section-heading">
-
             <span>03</span>
-
-            <h2>
-              SOURCES
-            </h2>
-
+            <h2>SOURCES</h2>
 
             {sources.length > 0 && (
-
               <div className="source-count">
-
-                {sources.length}{" "}
-                source
-                {sources.length !== 1
-                  ? "s"
-                  : ""}
-
+                {sources.length} source{sources.length !== 1 ? "s" : ""}
               </div>
-
             )}
-
           </div>
-
 
           <div className="sources">
-
             {sources.length > 0 ? (
-
-              sources.map(
-                (source, index) => (
-
-                  <div
-                    className="source-item"
-                    key={index}
-                  >
-
-                    <div className="source-number">
-
-                      {String(index + 1)
-                        .padStart(2, "0")}
-
-                    </div>
-
-
-                    <div>
-
-                      <div className="source-name">
-
-                        {typeof source === "string"
-                          ? source
-                          : source.source ||
-                            source.name ||
-                            source.metadata?.source ||
-                            "Retrieved document"}
-
-                      </div>
-
-
-                      {typeof source !== "string" &&
-                        source.text && (
-
-                          <div className="source-text">
-
-                            {source.text}
-
-                          </div>
-
-                        )}
-
-                    </div>
-
+              sources.map((source, index) => (
+                <div className="source-item" key={index}>
+                  <div className="source-number">
+                    {String(index + 1).padStart(2, "0")}
                   </div>
 
-                )
-              )
+                  <div>
+                    <div className="source-name">
+                      {typeof source === "string"
+                        ? source
+                        : source.source ||
+                          source.name ||
+                          source.metadata?.source ||
+                          "Retrieved document"}
+                    </div>
 
+                    {typeof source !== "string" && source.text && (
+                      <div className="source-text">{source.text}</div>
+                    )}
+                  </div>
+                </div>
+              ))
             ) : (
-
               <span className="placeholder">
-
                 Retrieved sources will appear here...
-
               </span>
-
             )}
-
           </div>
-
         </section>
-
 
         {/* =========================
             ARCHITECTURE
         ========================== */}
         <section className="architecture-card">
-
           <div className="section-heading">
-
             <span>04</span>
-
-            <h2>
-              ARCHITECTURE VISIBILITY
-            </h2>
-
+            <h2>ARCHITECTURE VISIBILITY</h2>
           </div>
-
 
           <div className="flow">
+            <div className="flow-step">
+              <strong>VOICE</strong>
+              <span>Input</span>
+            </div>
+
+            <div className="arrow">→</div>
 
             <div className="flow-step">
-
-              <strong>
-                VOICE
-              </strong>
-
-              <span>
-                Input
-              </span>
-
+              <strong>STT</strong>
+              <span>Transcription</span>
             </div>
 
-
-            <div className="arrow">
-              →
-            </div>
-
+            <div className="arrow">→</div>
 
             <div className="flow-step">
-
-              <strong>
-                STT
-              </strong>
-
-              <span>
-                Transcription
-              </span>
-
+              <strong>RETRIEVAL</strong>
+              <span>Vector Search</span>
             </div>
 
-
-            <div className="arrow">
-              →
-            </div>
-
+            <div className="arrow">→</div>
 
             <div className="flow-step">
-
-              <strong>
-                RETRIEVAL
-              </strong>
-
-              <span>
-                Vector Search
-              </span>
-
+              <strong>RAG</strong>
+              <span>Generation</span>
             </div>
 
-
-            <div className="arrow">
-              →
-            </div>
-
+            <div className="arrow">→</div>
 
             <div className="flow-step">
-
-              <strong>
-                RAG
-              </strong>
-
-              <span>
-                Grounded Processing
-              </span>
-
+              <strong>ANSWER</strong>
+              <span>Grounded Output</span>
             </div>
-
-
-            <div className="arrow">
-              →
-            </div>
-
-
-            <div className="flow-step">
-
-              <strong>
-                ANSWER
-              </strong>
-
-              <span>
-                Grounded Output
-              </span>
-
-            </div>
-
           </div>
-
 
           <div className="architecture-note">
-
-            Voice → Speech-to-Text → Retrieval →
-            Context → Answer → Grounding / Guardrails
-
+            Voice → Speech-to-Text → Chunking / Retrieval → Context →
+            Answer Generation → Grounding / Guardrails
           </div>
-
         </section>
-
 
         {/* =========================
             FOOTER
         ========================== */}
         <footer>
-
-          <span>
-            ZERO SIGNAL
-          </span>
-
-          <span>
-            VOICE-ENABLED RAG MODEL
-          </span>
-
-          <span>
-            HACKER HOUSE GOA 2026
-          </span>
-
+          <span>ZERO SIGNAL</span>
+          <span>VOICE-ENABLED RAG MODEL</span>
+          <span>HACKER HOUSE GOA 2026</span>
         </footer>
 
-
-        {/* RESET */}
-        <button
-          className="reset-btn"
-          onClick={resetResults}
-        >
+        <button className="reset-btn" onClick={resetResults}>
           CLEAR SESSION
         </button>
-
       </main>
-
     </div>
   );
 }
