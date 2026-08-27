@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
-<<<<<<< HEAD
 const API_BASE_URL = "https://voice-enabled-rag-production-860a.up.railway.app";
-=======
-const API_BASE_URL = "https://voice-enabled-rag-production.up.railway.app";
->>>>>>> 5a83be6 (fix: connect frontend to Railway and allow Netlify CORS)
 
 function App() {
   const [language, setLanguage] = useState("English");
@@ -47,19 +43,24 @@ function App() {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
-      }
-
       const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data?.detail || `Request failed with status ${response.status}`
+        );
+      }
 
       setTranscript(textQuery.trim());
       setAnswer(data.answer || "");
       setSources(data.sources || []);
       setGrounded(data.grounded ?? null);
     } catch (err) {
+      console.error("Text query error:", err);
+
       setError(
-        "Unable to connect to the backend. Make sure the FastAPI server is running."
+        err.message ||
+          "Unable to connect to the backend. Make sure the FastAPI server is running."
       );
     } finally {
       setLoading(false);
@@ -119,7 +120,13 @@ function App() {
       setSources([]);
       setGrounded(null);
     } catch (err) {
-      setError("Microphone access failed. Please allow microphone permission.");
+      console.error("Microphone error:", err);
+
+      setError(
+        err.message ||
+          "Microphone access failed. Please allow microphone permission."
+      );
+
       setRecording(false);
     }
   };
@@ -152,7 +159,12 @@ function App() {
     try {
       const formData = new FormData();
 
+      // IMPORTANT:
+      // Backend expects:
+      // audio: UploadFile = File(...)
       formData.append("audio", file);
+
+      // Keep language information in the request.
       formData.append("language", language.toLowerCase());
 
       const response = await fetch(`${API_BASE_URL}/voice/query`, {
@@ -160,19 +172,42 @@ function App() {
         body: formData,
       });
 
-      if (!response.ok) {
-        throw new Error(`Voice request failed: ${response.status}`);
-      }
-
       const data = await response.json();
 
-      setTranscript(data.transcript || data.query || "");
+      if (!response.ok) {
+        throw new Error(
+          data?.detail ||
+            `Voice request failed with status ${response.status}`
+        );
+      }
+
+      console.log("Voice response:", data);
+
+      /*
+       * Current backend response contains:
+       * answer
+       * sources
+       * grounded
+       *
+       * If backend later returns transcript,
+       * it will automatically be displayed here.
+       */
+      setTranscript(
+        data.transcript ||
+          data.query ||
+          ""
+      );
+
       setAnswer(data.answer || "");
       setSources(data.sources || []);
       setGrounded(data.grounded ?? null);
+
     } catch (err) {
+      console.error("Voice query error:", err);
+
       setError(
-        "Voice query failed. Check that the backend /voice/query endpoint is running."
+        err.message ||
+          "Voice query failed. Check that the backend /voice/query endpoint is running."
       );
     } finally {
       setLoading(false);
@@ -204,6 +239,9 @@ function App() {
     setAudioFile(null);
   };
 
+  // -----------------------------
+  // CLEANUP
+  // -----------------------------
   useEffect(() => {
     return () => {
       if (
@@ -226,7 +264,10 @@ function App() {
             HEADER
         ========================== */}
         <header className="hero">
-          <div className="team-name">ZERO SIGNAL</div>
+
+          <div className="team-name">
+            ZERO SIGNAL
+          </div>
 
           <h1>
             VOICE-ENABLED
@@ -237,15 +278,23 @@ function App() {
           <p>
             Real-time voice-powered retrieval and grounded question answering.
           </p>
+
         </header>
+
 
         {/* =========================
             CONTROL PANEL
         ========================== */}
         <section className="control-card">
+
           <div className="controls">
+
+            {/* LANGUAGE */}
             <div className="language-control">
-              <label htmlFor="language">VOICE LANGUAGE</label>
+
+              <label htmlFor="language">
+                VOICE LANGUAGE
+              </label>
 
               <select
                 id="language"
@@ -256,22 +305,39 @@ function App() {
                 <option>English</option>
                 <option>Hindi</option>
               </select>
+
             </div>
 
+
+            {/* RECORD */}
             <button
-              className={`record-btn ${recording ? "recording" : ""}`}
-              onClick={recording ? stopRecording : startRecording}
+              className={`record-btn ${
+                recording ? "recording" : ""
+              }`}
+              onClick={
+                recording
+                  ? stopRecording
+                  : startRecording
+              }
               disabled={loading}
             >
+
               <span className="mic-icon">
                 {recording ? "■" : "🎙"}
               </span>
 
-              {recording ? "STOP RECORDING" : "START RECORDING"}
+              {recording
+                ? "STOP RECORDING"
+                : "START RECORDING"}
+
             </button>
 
+
+            {/* UPLOAD */}
             <label className="upload-btn">
+
               <span>↑</span>
+
               UPLOAD AUDIO
 
               <input
@@ -313,42 +379,74 @@ function App() {
 
             <button
               onClick={askTextQuestion}
-              disabled={loading || recording || !textQuery.trim()}
+              disabled={
+                loading ||
+                recording ||
+                !textQuery.trim()
+              }
             >
-              {loading ? "PROCESSING..." : "ASK"}
+              {loading
+                ? "PROCESSING..."
+                : "ASK"}
             </button>
+
           </div>
+
         </section>
+
 
         {/* =========================
             ERROR
         ========================== */}
         {error && (
           <div className="error-box">
-            <strong>ERROR</strong>
-            <span>{error}</span>
+
+            <strong>
+              ERROR
+            </strong>
+
+            <span>
+              {error}
+            </span>
+
           </div>
         )}
+
 
         {/* =========================
             TRANSCRIPT
         ========================== */}
         <section className="result-card">
+
           <div className="section-heading">
+
             <span>01</span>
-            <h2>TRANSCRIPT</h2>
+
+            <h2>
+              TRANSCRIPT
+            </h2>
+
           </div>
 
+
           <div className="result-content transcript">
+
             {transcript ? (
+
               transcript
+
             ) : (
+
               <span className="placeholder">
                 Your voice transcript will appear here...
               </span>
+
             )}
+
           </div>
+
         </section>
+
 
         {/* =========================
             ANSWER
