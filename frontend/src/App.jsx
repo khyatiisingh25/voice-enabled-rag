@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
+<<<<<<< HEAD
 const API_BASE_URL = "https://voice-enabled-rag-production-860a.up.railway.app";
+=======
+const API_BASE_URL = "https://voice-enabled-rag-production.up.railway.app";
+>>>>>>> 5a83be6 (fix: connect frontend to Railway and allow Netlify CORS)
 
 function App() {
   const [language, setLanguage] = useState("English");
